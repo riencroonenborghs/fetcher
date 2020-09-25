@@ -14,12 +14,10 @@ export default class AuthenticationService extends ApiBase {
       this.buildUrl(path),
       data
     ).then(
-      result => {
-        console.log(result);
-      }
+      result => result.data
     ).catch(
       (error) => {
-        console.error(error);
+        throw(error.response.data.error)
       }
     )
   }

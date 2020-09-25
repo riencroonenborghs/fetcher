@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from './helpers/PrivateRoute';
 import './App.css';
 import Toolbar from './components/Toolbar';
-import Dashboard from './views/Dashboard';
+import Downloads from './views/Downloads';
+import NewDownload from './views/NewDownload';
 import SignIn from './views/SignIn';
 
 class App extends Component {
@@ -13,15 +14,21 @@ class App extends Component {
         <Toolbar />
         <Switch>
           <PrivateRoute exact path="/">
-            <Dashboard />
+            <Downloads />
           </PrivateRoute>
-          <PrivateRoute exact path="/dashboard">
-            <Dashboard />
+          <PrivateRoute exact path="/downloads">
+            <Downloads />
+          </PrivateRoute>
+          <PrivateRoute exact path="/downloads/new">
+            <NewDownload />
           </PrivateRoute>
           <Route exact path="/sign-in">
             <SignIn />
           </Route>
-        </Switch>
+          <Route>
+            <Redirect to="/" />
+          </Route>
+       </Switch>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 import AuthenticationService from '../../services/api/AuthenticationService';
 
@@ -12,8 +13,9 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: "rien@croonenborghs.net",
+      password: "",
+      error: null
     }
     this.clear = this.clear.bind(this);
     this.emailChanged = this.emailChanged.bind(this);
@@ -40,8 +42,18 @@ class SignIn extends Component {
   }
 
   signIn() {
+    this.setState({ error: null })
     const service = new AuthenticationService();
-    service.signIn(this.state.email, this.state.password).then();
+    service.signIn(this.state.email, this.state.password).then(
+      (result) => {
+        console.log('result')
+        console.log(result)
+      }
+    ).catch(
+      (error) => {
+        this.setState({ error: error })
+      }
+    )
   }
 
   render() {
@@ -54,6 +66,12 @@ class SignIn extends Component {
                 <TextField required id="email" label="E-mail" type="email" value={this.state.email} onChange={this.emailChanged} />
                 <TextField required id="password" label="Password" type="password" value={this.state.password} onChange={this.passwordChanged} />
               </Box>
+              {
+                this.state.error ?
+                  <Typography color="error">
+                    {this.state.error}
+                  </Typography> : ""
+              }
               <Box display="flex" flexWrap="nowrap" justifyContent="flex-end" className="Buttons">
                 <Button color="secondary" onClick={this.clear}>Clear</Button>
                 <Button color="primary" disabled={this.filledIn()} onClick={this.signIn}>Sign In</Button>
