@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Switch, Route } from "react-router-dom";
+import PrivateRoute from './helpers/PrivateRoute';
 import './App.css';
+import Toolbar from './components/Toolbar';
+import Dashboard from './views/Dashboard';
+import SignIn from './views/SignIn';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render () {
+    return (
+      <div className="App">
+        <Toolbar />
+        <Switch>
+          <PrivateRoute exact path="/">
+            <Dashboard />
+          </PrivateRoute>
+          <PrivateRoute exact path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
+          <Route exact path="/sign-in">
+            <SignIn />
+          </Route>
+        </Switch>
+      </div>
+    )
+  }
 }
 
 export default App;

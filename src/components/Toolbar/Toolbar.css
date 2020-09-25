@@ -1,0 +1,7 @@
+.Toolbar {
+  flex-grow: 1;
+}
+
+.Toolbar .title {
+  flex-grow: 1;
+}

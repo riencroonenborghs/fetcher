@@ -1,0 +1,13 @@
+.SignIn {
+  position: relative;
+  top: 200px;
+}
+
+.SignIn .Content {
+  min-width: 350px;;
+  padding: 16px;
+}
+
+.SignIn .Buttons {
+  margin-top: 16px;
+}
