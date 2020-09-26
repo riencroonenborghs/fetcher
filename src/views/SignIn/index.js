@@ -33,6 +33,8 @@ class SignIn extends Component {
     if(service.valid) {
       this.props.setJWTData(service.data);
       this.props.history.push('/downloads');
+    } else {
+      service.clear();
     }
   }
 
@@ -60,9 +62,9 @@ class SignIn extends Component {
     const apiService = new ApiAuthenticationService();
     apiService.signIn(this.state.email, this.state.password).then(
       (data) => {
-        this.props.setJWTData(data);
         const service = new AuthenticationService();
-        service.save(data.token, new Date(data.exp));
+        service.save(data.token, data.exp);
+        this.props.setJWTData(data);
         this.props.history.push('/downloads');
       }
     ).catch(

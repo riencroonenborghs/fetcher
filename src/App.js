@@ -33,7 +33,6 @@ class App extends Component {
   }
 }
 
-// export default App;
 const mapStateToProps = state => {
   const authenticated = state.authentication.authenticated;
   return { authenticated }

@@ -33,7 +33,6 @@ import { Route, Redirect } from 'react-router-dom';
 
 class PrivateRoute extends Component {
   render () {
-    console.log(`PrivateRoute render this.props.authenticated: ${this.props.authenticated}`);
     return this.props.authenticated ?
       <Route {...this.props} /> :
       <Redirect to={{
@@ -44,9 +43,7 @@ class PrivateRoute extends Component {
   }
 }
 
-// export default PrivateRoute;
 const mapStateToProps = state => {
-  console.log(`PrivateRoute mapStateToProps state.authentication.authenticated: ${state.authentication.authenticated}`);
   const authenticated = state.authentication.authenticated;
   return { authenticated }
 };

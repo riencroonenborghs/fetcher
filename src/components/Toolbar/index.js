@@ -11,6 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Lock from '@material-ui/icons/Lock';
 import LockOpen from '@material-ui/icons/LockOpen';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import AddIcon from '@material-ui/icons/Add';
+
+import AuthenticationService from '../../services/AuthenticationService';
 
 class Toolbar extends Component {
   constructor (props) {
@@ -25,7 +29,8 @@ class Toolbar extends Component {
 
   signOut () {
     this.props.signOut();
-    
+    const service = new AuthenticationService();
+    service.clear();
     this.props.history.push('/');
   }
 
@@ -40,12 +45,21 @@ class Toolbar extends Component {
             {
               this.props.authenticated ?
                 <div>
-                  <Link to='/downloads'>D</Link>
-                  <IconButton edge="start" color="inherit" aria-label="sign in needed" onClick={this.signOut}>
+                  <Link to="/downloads/new">
+                    <IconButton edge="start" color="inherit" aria-label="New Download">
+                      <AddIcon />
+                    </IconButton>                    
+                  </Link>
+                  <Link to="/downloads">
+                    <IconButton edge="start" color="inherit" aria-label="Downloads">
+                      <CloudDownloadIcon />
+                    </IconButton>                    
+                  </Link>
+                  <IconButton edge="start" color="inherit" aria-label="Sign Out" onClick={this.signOut}>
                     <LockOpen />
                   </IconButton>
                 </div>:
-                <IconButton edge="start" color="inherit" aria-label="sign in needed" onClick={this.signIn}>
+                <IconButton edge="start" color="inherit" aria-label="Sign In" onClick={this.signIn}>
                   <Lock />
                 </IconButton>
             }

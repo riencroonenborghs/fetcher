@@ -5,3 +5,8 @@
 .Toolbar .title {
   flex-grow: 1;
 }
+
+.Toolbar a,
+.Toolbar a:visited {
+  color: inherit;
+}

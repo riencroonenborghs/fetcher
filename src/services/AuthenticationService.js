@@ -10,7 +10,7 @@ export default class AuthenticationService {
     this.data = JSON.parse(
       localStorage.get(this.key) || '{}'
     );
-    if(this.data.expires) {
+    if(this.data.expires && typeof(this.data.expires) === "string") {
       this.data.expires = new Date(this.data.expires);
     }
   }
@@ -24,7 +24,8 @@ export default class AuthenticationService {
   }
 
   clear() {
-    
+    localStorage.remove(this.key);
+    this.data = {};
   }
 
   get token() {
