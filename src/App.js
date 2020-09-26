@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
-import PrivateRoute from './helpers/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import { connect } from 'react-redux';
 import './App.css';
 import Toolbar from './components/Toolbar';
 import Downloads from './views/Downloads';
@@ -22,9 +23,7 @@ class App extends Component {
           <PrivateRoute exact path="/downloads/new">
             <NewDownload />
           </PrivateRoute>
-          <Route exact path="/sign-in">
-            <SignIn />
-          </Route>
+          <Route exact path="/sign-in" component={SignIn} />
           <Route>
             <Redirect to="/" />
           </Route>
@@ -34,4 +33,11 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+const mapStateToProps = state => {
+  const authenticated = state.authentication.authenticated;
+  return { authenticated }
+};
+export default connect(
+  mapStateToProps
+)(App);

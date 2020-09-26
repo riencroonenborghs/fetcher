@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { signOut } from '../../redux/actions';
+
 import './Toolbar.css';
 import AppBar from '@material-ui/core/AppBar';
 import MaterialToolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Lock from '@material-ui/icons/Lock';
 import LockOpen from '@material-ui/icons/LockOpen';
@@ -11,19 +15,18 @@ import LockOpen from '@material-ui/icons/LockOpen';
 class Toolbar extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      authenticated: false
-    }
     this.signIn = this.signIn.bind(this);
     this.signOut = this.signOut.bind(this);
   }
 
   signIn () {
-    this.setState({ authenticated: true })
+    this.props.history.push('/sign-in');
   }
 
   signOut () {
-    this.setState({ authenticated: false })
+    this.props.signOut();
+    
+    this.props.history.push('/');
   }
 
   render() {
@@ -35,10 +38,13 @@ class Toolbar extends Component {
               Fetcher
             </Typography>
             {
-              this.state.authenticated ?
-                <IconButton edge="start" color="inherit" aria-label="sign in needed" onClick={this.signOut}>
-                  <LockOpen />
-                </IconButton> :
+              this.props.authenticated ?
+                <div>
+                  <Link to='/downloads'>D</Link>
+                  <IconButton edge="start" color="inherit" aria-label="sign in needed" onClick={this.signOut}>
+                    <LockOpen />
+                  </IconButton>
+                </div>:
                 <IconButton edge="start" color="inherit" aria-label="sign in needed" onClick={this.signIn}>
                   <Lock />
                 </IconButton>
@@ -50,4 +56,13 @@ class Toolbar extends Component {
   }
 }
 
-export default Toolbar;
+// export default Toolbar;
+
+const mapStateToProps = state => {
+  const authenticated = state.authentication.authenticated;
+  return { authenticated }
+};
+export default connect(
+  mapStateToProps,
+  { signOut }
+)(withRouter(Toolbar));

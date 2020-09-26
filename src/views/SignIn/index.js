@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setJWTData } from '../../redux/actions';
+
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-import AuthenticationService from '../../services/api/AuthenticationService';
+import ApiAuthenticationService from '../../services/api/ApiAuthenticationService';
+import AuthenticationService from '../../services/AuthenticationService';
 
 import './SignIn.css';
 
@@ -21,6 +25,15 @@ class SignIn extends Component {
     this.emailChanged = this.emailChanged.bind(this);
     this.passwordChanged = this.passwordChanged.bind(this);
     this.signIn = this.signIn.bind(this);
+  }
+
+  componentDidMount() {
+    const service = new AuthenticationService();
+    service.load();
+    if(service.valid) {
+      this.props.setJWTData(service.data);
+      this.props.history.push('/downloads');
+    }
   }
 
   clear() {
@@ -42,12 +55,15 @@ class SignIn extends Component {
   }
 
   signIn() {
-    this.setState({ error: null })
-    const service = new AuthenticationService();
-    service.signIn(this.state.email, this.state.password).then(
-      (result) => {
-        console.log('result')
-        console.log(result)
+    this.setState({ error: null });
+    
+    const apiService = new ApiAuthenticationService();
+    apiService.signIn(this.state.email, this.state.password).then(
+      (data) => {
+        this.props.setJWTData(data);
+        const service = new AuthenticationService();
+        service.save(data.token, new Date(data.exp));
+        this.props.history.push('/downloads');
       }
     ).catch(
       (error) => {
@@ -84,4 +100,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+// export default SignIn;
+export default connect(
+  null,
+  { setJWTData }
+)(SignIn);

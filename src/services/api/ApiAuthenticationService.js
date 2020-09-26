@@ -1,6 +1,6 @@
 import ApiBase from './ApiBase';
 
-export default class AuthenticationService extends ApiBase {
+export default class ApiAuthenticationService extends ApiBase {
   signIn(email, password) {
     const path = "/users/sign_in"
     const data = {
