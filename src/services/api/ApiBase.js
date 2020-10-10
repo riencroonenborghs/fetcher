@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 export default class ApiBase {
-  constructor() {
-    this.protocol = "http";
-    this.hostname = "mother";
-    this.port = 80;
+  constructor(protocol, hostname, port, token = null) {
+    this.protocol = protocol;
+    this.hostname = hostname;
+    this.port = port;
     this.httpClient = axios;
+    axios.defaults.headers.common['Authorization'] = token;
   }
 
   buildUrl(path) {

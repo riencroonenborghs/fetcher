@@ -1,0 +1,25 @@
+.Settings {
+  position: relative;
+  top: 200px;
+}
+
+.Settings .Content {
+  min-width: 350px;;
+  padding: 16px;
+}
+
+.Settings .Port {
+  width: 60px;
+}
+
+.Settings .Hostname {
+  width: 250px;
+}
+
+.Settings .Buttons {
+  margin-top: 16px;
+}
+
+.success-message .MuiSnackbarContent-root {
+  background-color: green;
+}

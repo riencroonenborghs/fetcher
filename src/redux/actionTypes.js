@@ -1,2 +1,6 @@
 export const SET_JWT_DATA = "SET_JWT_DATA";
+export const SET_SERVER_DATA = "SET_SERVER_DATA";
+export const SET_SERVER_PROTOCOL = "SET_SERVER_PROTOCOL";
+export const SET_SERVER_HOSTNAME = "SET_SERVER_HOSTNAME";
+export const SET_SERVER_PORT = "SET_SERVER_PORT";
 export const SIGN_OUT = "SIGN_OUT";

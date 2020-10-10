@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
 import ApiAuthenticationService from '../../services/api/ApiAuthenticationService';
-import AuthenticationService from '../../services/AuthenticationService';
+import StorageService from '../../services/StorageService';
 
 import './SignIn.css';
 
@@ -25,17 +25,6 @@ class SignIn extends Component {
     this.emailChanged = this.emailChanged.bind(this);
     this.passwordChanged = this.passwordChanged.bind(this);
     this.signIn = this.signIn.bind(this);
-  }
-
-  componentDidMount() {
-    const service = new AuthenticationService();
-    service.load();
-    if(service.valid) {
-      this.props.setJWTData(service.data);
-      this.props.history.push('/downloads');
-    } else {
-      service.clear();
-    }
   }
 
   clear() {
@@ -59,11 +48,11 @@ class SignIn extends Component {
   signIn() {
     this.setState({ error: null });
     
-    const apiService = new ApiAuthenticationService();
+    const apiService = new ApiAuthenticationService(this.props.protocol, this.props.hostname, this.props.port);
     apiService.signIn(this.state.email, this.state.password).then(
       (data) => {
-        const service = new AuthenticationService();
-        service.save(data.token, data.exp);
+        // const service = new StorageService();
+        // service.save(data.token, data.exp);
         this.props.setJWTData(data);
         this.props.history.push('/downloads');
       }
@@ -103,7 +92,11 @@ class SignIn extends Component {
 }
 
 // export default SignIn;
+const mapStateToProps = state => {
+  const { protocol, hostname, port } = state.server;
+  return { protocol, hostname, port }
+};
 export default connect(
-  null,
+  mapStateToProps,
   { setJWTData }
 )(SignIn);

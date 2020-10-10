@@ -13,8 +13,9 @@ import Lock from '@material-ui/icons/Lock';
 import LockOpen from '@material-ui/icons/LockOpen';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import AddIcon from '@material-ui/icons/Add';
+import SettingsIcon from '@material-ui/icons/Settings';
 
-import AuthenticationService from '../../services/AuthenticationService';
+import JWTService from '../../services/JWTService';
 
 class Toolbar extends Component {
   constructor (props) {
@@ -29,7 +30,7 @@ class Toolbar extends Component {
 
   signOut () {
     this.props.signOut();
-    const service = new AuthenticationService();
+    const service = new JWTService();
     service.clear();
     this.props.history.push('/');
   }
@@ -39,6 +40,11 @@ class Toolbar extends Component {
       <div className="Toolbar">
         <AppBar position="static">
           <MaterialToolbar>
+            <Link to="/settings">
+              <IconButton edge="start" color="inherit" aria-label="Settings">
+                <SettingsIcon />
+              </IconButton>
+            </Link>
             <Typography variant="h6" className="title">
               Fetcher
             </Typography>
