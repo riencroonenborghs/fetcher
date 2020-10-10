@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import QueuedDownloadItem from '../QueuedDownloadItem';
+import StartedDownloadItem from '../StartedDownloadItem';
+import FinishedDownloadItem from '../FinishedDownloadItem';
 import './DownloadList.css';
 
 class DownloadList extends Component {
@@ -18,6 +20,12 @@ class DownloadList extends Component {
   renderItem(item) {
     switch(item.status) {
       case 'queued':
+        return <QueuedDownloadItem item={item} />
+      case 'started':
+        return <StartedDownloadItem item={item} />
+      case 'finished':
+        return <FinishedDownloadItem item={item} />
+      default:
         return <QueuedDownloadItem item={item} />
     }
   }

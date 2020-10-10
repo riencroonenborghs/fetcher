@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
+import QueueIcon from '@material-ui/icons/Queue';
 
 import DateFormatter from "../../services/DateFormatter";
 import './QueuedDownloadItem.css';
 
 class QueuedDownloadItem extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="QueuedDownloadItem">        
         <Typography>
-          Queued by {this.props.item.user.email} <br />
-          Queued on {new DateFormatter().format(this.props.item.queued_at)}
+          <QueueIcon className="queued" /> Queued by {this.props.item.user.email} <br />
+          <QueueIcon className="queued"/> Queued at {new DateFormatter().format(this.props.item.queued_at)}
         </Typography>
       </div>
     )
