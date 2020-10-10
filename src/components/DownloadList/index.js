@@ -5,9 +5,22 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import QueuedDownloadItem from '../QueuedDownloadItem';
 import './DownloadList.css';
 
 class DownloadList extends Component {
+
+  constructor(props) {
+    super(props)
+    this.renderItem = this.renderItem.bind(this);
+  }
+
+  renderItem(item) {
+    switch(item.status) {
+      case 'queued':
+        return <QueuedDownloadItem item={item} />
+    }
+  }
 
   render() {
     if(!this.props.show) { return ""; }
@@ -23,9 +36,7 @@ class DownloadList extends Component {
                   <Typography>{item.url}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {item.created_at}
-                  </Typography>
+                  {this.renderItem(item)}
                 </AccordionDetails>
               </Accordion>
             );
