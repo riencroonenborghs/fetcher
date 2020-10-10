@@ -17,13 +17,9 @@ import StorageService from './services/StorageService';
 
 class App extends Component {
   componentDidMount() {
-    console.log('App componentDidMount')
     const service = new StorageService();
-    console.log('App componentDidMount 1')
     service.load(); 
-    console.log('App componentDidMount 2')
     this.props.setJWTData(service.jwtData);
-    console.log('App componentDidMount 3')
     this.props.setServerData(service.serverData);
   }
 

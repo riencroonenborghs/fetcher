@@ -24,7 +24,7 @@ class Downloads extends Component {
   }
 
   load() {
-    const service = new ApiDownloadsService(this.props.token);
+    const service = new ApiDownloadsService(this.props.protocol, this.props.hostname, this.props.port, this.props.token);
     service.get().then(
       (list) => this.setState({ list: list })
     )
@@ -73,7 +73,8 @@ class Downloads extends Component {
 // export default Downloads;
 const mapStateToProps = state => {
   const { token } = state.authentication;
-  return { token }
+  const { protocol, hostname, port } = state.server;
+  return { token, protocol, hostname, port }
 };
 export default connect(
   mapStateToProps

@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
       const { token, expires } = action.payload;
       return {
         ...state,
-        authenticated: true,
+        authenticated: token !== null && token !== "",
         token: token,
         expires: typeof(expires) == "string"  ? new Date(expires) : expires
       };

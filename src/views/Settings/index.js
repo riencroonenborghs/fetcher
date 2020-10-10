@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import StorageService from '../../services/StorageService';
+import SettingsService from '../../services/SettingsService';
 
 import './Settings.css';
 
@@ -69,12 +69,10 @@ class Settings extends Component {
   }
 
   save() {
-    const service = new StorageService();
-    service.serverData = {
-      protocol: this.state.protocol,
-      hostname: this.state.hostname,
-      port: this.state.port
-    }
+    const service = new SettingsService();
+    service.protocol = this.state.protocol;
+    service.hostname = this.state.hostname;
+    service.port = this.state.port;
     service.save();
     this.setState({ success: true });
   }

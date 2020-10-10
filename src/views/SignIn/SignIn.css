@@ -11,3 +11,7 @@
 .SignIn .Buttons {
   margin-top: 16px;
 }
+
+.error-message .MuiSnackbarContent-root {
+  background-color: #c43a3a;
+}
