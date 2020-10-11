@@ -1,8 +1,0 @@
-.CancelledDownloadItem { width: 100%; }
-.delete-button { margin-right: 16px !important; }
-
-
-.queued { color: #cae1e9; }
-.started { color: #7676cc; }
-.finished { color: #afe1af; }
-.cancelled { color: #e7ba93; }

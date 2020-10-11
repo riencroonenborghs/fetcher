@@ -10,7 +10,7 @@ class StartedDownloadItem extends Component {
 
   render() {
     return (
-      <div className="StartedDownloadItem">        
+      <div className="StartedDownloadItem download-item">        
         <Typography>
           <QueueIcon className="queued" /> Queued by {this.props.item.user.email} <br />
           <QueueIcon className="queued" /> Queued at {new DateFormatter().format(this.props.item.queued_at)} <br />
