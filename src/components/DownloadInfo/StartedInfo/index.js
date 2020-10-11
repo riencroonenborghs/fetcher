@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
-import DateFormatter from "../../services/DateFormatter";
+import DateFormatter from "../../../services/DateFormatter";
 import './StartedInfo.css';
 
 class StartedInfo extends Component {

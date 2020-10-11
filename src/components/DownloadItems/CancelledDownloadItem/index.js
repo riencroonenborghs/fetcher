@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-import QueuedInfo from "../QueuedInfo";
-import StartedInfo from "../StartedInfo";
-import FinishedInfo from "../FinishedInfo";
-import DeleteAndRequeue from "../DeleteAndRequeue";
+import QueuedInfo from "../../DownloadInfo/QueuedInfo";
+import StartedInfo from "../../DownloadInfo/StartedInfo";
+import FinishedInfo from "../../DownloadInfo/FinishedInfo";
+import DeleteAndRequeue from "../../DeleteAndRequeue";
 
-import DateFormatter from "../../services/DateFormatter";
+import DateFormatter from "../../../services/DateFormatter";
 import './CancelledDownloadItem.css';
 
 class CancelledDownloadItem extends Component {

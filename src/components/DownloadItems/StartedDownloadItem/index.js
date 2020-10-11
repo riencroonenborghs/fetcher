@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import QueuedInfo from "../QueuedInfo";
-import StartedInfo from "../StartedInfo";
+import QueuedInfo from "../../DownloadInfo/QueuedInfo";
+import StartedInfo from "../../DownloadInfo/StartedInfo";
 
 import './StartedDownloadItem.css';
 

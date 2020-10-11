@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import QueueIcon from '@material-ui/icons/Queue';
 
-import DateFormatter from "../../services/DateFormatter";
+import DateFormatter from "../../../services/DateFormatter";
 import './QueuedInfo.css';
 
 class QueuedInfo extends Component {

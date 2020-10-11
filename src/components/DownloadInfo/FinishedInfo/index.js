@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import DoneIcon from '@material-ui/icons/Done';
 
-import DateFormatter from "../../services/DateFormatter";
+import DateFormatter from "../../../services/DateFormatter";
 import './FinishedInfo.css';
 
 class FinishedInfo extends Component {

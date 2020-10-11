@@ -5,11 +5,11 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import QueuedDownloadItem from '../QueuedDownloadItem';
-import StartedDownloadItem from '../StartedDownloadItem';
-import FinishedDownloadItem from '../FinishedDownloadItem';
-import ErrorDownloadItem from '../ErrorDownloadItem';
-import CancelledDownloadItem from '../CancelledDownloadItem';
+import QueuedDownloadItem from '../DownloadItems/QueuedDownloadItem';
+import StartedDownloadItem from '../DownloadItems/StartedDownloadItem';
+import FinishedDownloadItem from '../DownloadItems/FinishedDownloadItem';
+import ErrorDownloadItem from '../DownloadItems/ErrorDownloadItem';
+import CancelledDownloadItem from '../DownloadItems/CancelledDownloadItem';
 import './DownloadList.css';
 
 class DownloadList extends Component {

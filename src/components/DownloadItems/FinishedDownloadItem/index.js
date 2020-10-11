@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import QueuedInfo from "../QueuedInfo";
-import StartedInfo from "../StartedInfo";
-import FinishedInfo from "../FinishedInfo";
-import DeleteAndRequeue from "../DeleteAndRequeue";
+import QueuedInfo from "../../DownloadInfo/QueuedInfo";
+import StartedInfo from "../../DownloadInfo/StartedInfo";
+import FinishedInfo from "../../DownloadInfo/FinishedInfo";
+import DeleteAndRequeue from "../../DeleteAndRequeue";
 
 import './FinishedDownloadItem.css';
 
