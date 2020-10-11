@@ -1,0 +1,5 @@
+.queued { color: #c6c21b; } /* dark yellow */
+.started { color: #03a9f4; } /* light blue */
+.finished { color: #18be0e; } /* green */
+.error { color: #be0e0e; } /* red */
+.cancelled { color: #fd671d; } /* orange */
