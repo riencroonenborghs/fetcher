@@ -1,6 +1,7 @@
-.FinishedDownloadItem { width: 100%; }
+.ErrorDownloadItem { width: 100%; }
 .delete-button { margin-right: 16px !important; }
 
 .queued { color: #cae1e9; }
 .started { color: #7676cc; }
 .finished { color: #afe1af; }
+.error { color: red; }

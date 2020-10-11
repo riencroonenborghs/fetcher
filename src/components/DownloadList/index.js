@@ -8,6 +8,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import QueuedDownloadItem from '../QueuedDownloadItem';
 import StartedDownloadItem from '../StartedDownloadItem';
 import FinishedDownloadItem from '../FinishedDownloadItem';
+import ErrorDownloadItem from '../ErrorDownloadItem';
+import CancelledDownloadItem from '../CancelledDownloadItem';
 import './DownloadList.css';
 
 class DownloadList extends Component {
@@ -25,6 +27,10 @@ class DownloadList extends Component {
         return <StartedDownloadItem item={item} />
       case 'finished':
         return <FinishedDownloadItem item={item} />
+      case 'error':
+        return <ErrorDownloadItem item={item} />
+      case 'cancelled':
+        return <CancelledDownloadItem item={item} />
       default:
         return <QueuedDownloadItem item={item} />
     }
